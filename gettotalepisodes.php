@@ -1,7 +1,11 @@
 <?php
 function gettotalepisodes($inputtitle)
 {
-	$url = "http://www.bbc.co.uk/radio4extra/programmes/genres/drama/current.json";
+	if ($_SESSION["db_name"] = "radio_4")
+		$url = "http://www.bbc.co.uk/radio4/programmes/genres/drama/current.json";
+	else
+	    $url = "http://www.bbc.co.uk/radio4extra/programmes/genres/drama/current.json";
+		
 	$json = file_get_contents($url);
 	$data = json_decode($json,true);
 
