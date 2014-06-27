@@ -1,7 +1,7 @@
 <?php
-function gettotalepisodes($inputtitle)
+function gettotalepisodes($inputtitle,$dbname)
 {
-	if ($_SESSION["db_name"] = "radio_4")
+	if ($dbname = "radio_4")
 		$url = "http://www.bbc.co.uk/radio4/programmes/genres/drama/current.json";
 	else
 	    $url = "http://www.bbc.co.uk/radio4extra/programmes/genres/drama/current.json";
