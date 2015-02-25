@@ -9,12 +9,14 @@
 
 $pid = @$_POST["pid"];
  
-echo "<form method='post' action='http://www.bbc.co.uk/programmes/$pid' id='autosubmit' name='autosubmit' target='_blank'>";
-echo "</form>";
+//echo "<form method='post' action='http://www.bbc.co.uk/programmes/$pid' id='autosubmit' name='autosubmit' target='_blank'>";
+//echo "</form>";
 
 // none of the below works any more - the bbc has changed the json interface...
 
-/* $url = "http://www.bbc.co.uk/programmes/$pid/episodes/player.json";
+// update 25/02/2015 - this view seems to be back...
+
+ $url = "http://www.bbc.co.uk/programmes/$pid/episodes/player.json";
  
  $json = file_get_contents($url);
  
@@ -62,9 +64,10 @@ else
 		if (strlen($title) > 1)
 		    echo "Single episode! " . $pid .  "<br />" . $title;
 	}
-}*/
-
+}
+// paste this between body and html when uncommenting above code
+//<script language=JavaScript>document.autosubmit.submit();</script>
 ?>
 </body>
-<script language=JavaScript>document.autosubmit.submit();</script>
+
 </html>
