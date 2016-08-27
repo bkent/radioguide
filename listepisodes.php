@@ -1,5 +1,5 @@
 <?php
-function ListEpisodesOfParent($pid) 
+function ListEpisodesOfParent($pid,$showepisodes) 
 {
 	$url = "http://www.bbc.co.uk/programmes/$pid/episodes/player.json";
 	 
@@ -27,9 +27,11 @@ function ListEpisodesOfParent($pid)
 	//exit;
 
 	$resultstring;
+	$commaseparatedepisodes;
 
 	if (!$singleepisode)
 	{ 
+                $i=0;
 		foreach($data['episodes'] as $episodes) {
 			$title = str_replace(' ', '_',$episodes['programme']['title']);
 			$position = $episodes['programme']['position'];
@@ -42,6 +44,11 @@ function ListEpisodesOfParent($pid)
 			else
 				$resultstring .= $series . "_-_" . $position . "_of_" . $total . "_" . $title . " pid: ";
 			$resultstring .= $pid . "<br />";
+			if ($i==0)
+				$commaseparatedepisodes .= $pid;
+			else
+				$commaseparatedepisodes .= "," . $pid;
+			$i++;
 		}
 	}
 	else
@@ -53,7 +60,11 @@ function ListEpisodesOfParent($pid)
 		}
 	}
 	
-	return $resultstring;
+        $resultstring .= "<br/>" . $commaseparatedepisodes;
+	
+	if ($showepisodes)
+	//return $resultstring;
+	return $commaseparatedepisodes . ",";
 
 }
 ?>
